@@ -26,18 +26,28 @@ public class CategoryController {
 
     //Methods
     @GetMapping("/all")
-    public ResponseEntity<List<Category>> getCategory(){
+    public ResponseEntity<List<Category>> getAllCategories(){
         return new ResponseEntity<List<Category>>(this.categoryService.getListCategory(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public  ResponseEntity<List<Category>>  getCategory(@PathVariable("id") int id) {
-        return new ResponseEntity<List<Category>>(this.categoryService.getCategoryById(id), HttpStatus.OK);
+    public  ResponseEntity<Category>  getCategoryById(@PathVariable("id") int id) {
+        return new ResponseEntity<Category>(this.categoryService.getCategoryById(id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<List<Category>> createCategory(@RequestBody Category categ){
-        return  new ResponseEntity<List<Category>>(this.categoryService.createCategory(categ), HttpStatus.CREATED);
+    public ResponseEntity<Void> createCategory(@RequestBody Category categ){
+        this.categoryService.createCategory(categ);
+        return  new ResponseEntity<Void>(HttpStatus.CREATED);
+    }
+
+    public ResponseEntity<Void> updateCategory(@RequestBody Category category){
+        System.out.println("Inpt  attriubutes");
+        System.out.println("id: " + category.getId());
+        System.out.println("name: " + category.getName());
+        System.out.println("description " + category.getDescription());
+        this.categoryService.updateCategory(category.getId(), category);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

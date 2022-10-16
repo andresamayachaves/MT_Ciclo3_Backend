@@ -19,6 +19,9 @@ public class Category implements Serializable {
     @Column(name = "farms")
     private Farm[] farms;
 
+    @Column(name = "description")
+    private String description;
+
     //Constructor No-args
     public Category() {
     }
@@ -55,6 +58,14 @@ public class Category implements Serializable {
 
     public void setFarms(Farm[] farms) {
         this.farms = farms;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 

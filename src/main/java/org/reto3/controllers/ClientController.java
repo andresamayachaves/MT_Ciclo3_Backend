@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/Client")
 public class ClientController {
+
     //Attributes
     @Autowired
     ClientService clientService;
@@ -25,24 +26,31 @@ public class ClientController {
 
     //Methods
     @GetMapping("/all")
-    public ResponseEntity<List<Client>> getClient(){
-        return new ResponseEntity<List<Client>>(this.clientService.getListClient(), HttpStatus.OK);
+    public ResponseEntity<List<Client>> getAllClients(){
+        return new ResponseEntity<List<Client>>(this.clientService.getAllClients(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public  ResponseEntity<List<Client>>  getClient(@PathVariable("id") int id) {
-        return new ResponseEntity<List<Client>>(this.clientService.getClientById(id), HttpStatus.OK);
+    public  ResponseEntity<Client>  getClientById(@PathVariable("id") int id) {
+        return new ResponseEntity<Client>((Client) this.clientService.getClientById(id), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<List<Client>> createClient(@RequestBody Client cl){
-        return  new ResponseEntity<List<Client>>(this.clientService.createClient(cl), HttpStatus.CREATED);
+    @PostMapping("/save")
+    public ResponseEntity<Void> createClient(@RequestBody Client client){
+        this.clientService.createClient(client);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Void> actualizarClient(@RequestBody Client client){
+        this.clientService.updateClient(client.getIdClient(), client);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteClient(@PathVariable("id") int id){
+    public ResponseEntity<Void> eliminarClient(@PathVariable("id") int id){
         this.clientService.deleteClient(id);
-        return new ResponseEntity<String>("Client has been deleted", HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 }
 
