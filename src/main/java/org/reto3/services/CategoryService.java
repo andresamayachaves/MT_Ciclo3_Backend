@@ -1,7 +1,6 @@
 package org.reto3.services;
 
 import org.reto3.entities.Category;
-import org.reto3.entities.Farm;
 import org.reto3.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 

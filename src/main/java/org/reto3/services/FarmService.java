@@ -1,13 +1,8 @@
 package org.reto3.services;
 
 import org.reto3.entities.Farm;
-import org.reto3.entities.Farm;
 import org.reto3.repositories.FarmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,7 +42,7 @@ public class FarmService {
     private void setAllAtts(Farm fmToUpdate, Farm newData){
         if(newData.getName() != null)       fmToUpdate.setName(newData.getName());
         if(newData.getAddress() != null)        fmToUpdate.setAddress(newData.getAddress());
-        if(newData.getDescription() != null) fmToUpdate.setDescription(newData.getDescription());
+        if(newData.getDescription() != null)    fmToUpdate.setDescription(newData.getDescription());
         if(newData.getExtension() != null)           fmToUpdate.setExtension(newData.getExtension());
     }
 

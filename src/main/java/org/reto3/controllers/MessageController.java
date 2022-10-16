@@ -16,32 +16,33 @@ public class MessageController {
 
     //Attributes
     @Autowired
-    MessageService messageServiceService;
+    MessageService messageService;
 
     //Constructor
-    public MessageController(MessageService messageServiceService) {
-        this.messageServiceService = MessageController.this.messageServiceService;
+    public MessageController(MessageService messageService) {
+            this.messageService = messageService;
     }
+
 
     //Methods
     @GetMapping("/all")
     public ResponseEntity<List<Message>> getMessage(){
-        return new ResponseEntity<List<Message>>(this.messageServiceService.getListMessage(), HttpStatus.OK);
+        return new ResponseEntity<List<Message>>(this.messageService.getAllMessages(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public  ResponseEntity<List<Message>>  getMessage(@PathVariable("id") int id) {
-        return new ResponseEntity<List<Message>>(this.messageServiceService.getMessageById(id), HttpStatus.OK);
+        return new ResponseEntity<List<Message>>(this.messageService.getMessageById(id), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<List<Message>> createMessage(@RequestBody Message message){
-        return  new ResponseEntity<List<Message>>(this.messageServiceService.createMessage(message), HttpStatus.CREATED);
+        return  new ResponseEntity<List<Message>>(this.messageService.createMessage(message), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteMessage(@PathVariable("id") int id){
-        this.messageServiceService.deleteMessage(id);
+        this.messageService.deleteMessage(id);
         return new ResponseEntity<String>("Message has been deleted", HttpStatus.NO_CONTENT);
     }
 }
