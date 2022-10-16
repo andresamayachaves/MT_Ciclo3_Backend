@@ -21,7 +21,7 @@ public class ClientService {
     }
 
     public Client getClientById(int id) {
-        if(!this.clientRepository.findById(id).isEmpty()){
+        if(this.clientRepository.findById(id).isPresent()){
             return this.clientRepository.findById(id).get();
         }else{
             return null;

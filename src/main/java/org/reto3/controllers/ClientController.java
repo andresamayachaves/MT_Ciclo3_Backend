@@ -20,9 +20,7 @@ public class ClientController {
     ClientService clientService;
 
     //Constructor
-    public ClientController(ClientService clientService) {
-        this.clientService = clientService;
-    }
+    public ClientController(ClientService clientService) {this.clientService = clientService;}
 
     //Methods
     @GetMapping("/all")
@@ -36,9 +34,9 @@ public class ClientController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Void> createClient(@RequestBody Client client){
+    public ResponseEntity<List<Client>>createClient(@RequestBody Client client){
         this.clientService.createClient(client);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
+        return new ResponseEntity<List<Client>>(this.clientService.getAllClients(), HttpStatus.CREATED);
     }
 
     @PutMapping("/update")

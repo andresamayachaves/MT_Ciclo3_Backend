@@ -36,9 +36,9 @@ public class ReservationController {
     }
 
     @PostMapping("save")
-    public ResponseEntity<Void> createReservation(@RequestBody Reservation reserv){
+    public ResponseEntity<List<Reservation>>  createReservation(@RequestBody Reservation reserv){
         this.reservationService.createReservation(reserv);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
+        return new ResponseEntity<List<Reservation>>(this.reservationService.getAllReservations(), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

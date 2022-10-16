@@ -28,7 +28,7 @@ public class FarmController {
     //Methods
     @GetMapping("/all")
     public ResponseEntity<List<Farm>> getFarm(){
-        return new ResponseEntity<List<Farm>>(this.farmService.getListFarm(), HttpStatus.OK);
+        return new ResponseEntity<List<Farm>>(this.farmService.getAllFarms(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -37,10 +37,25 @@ public class FarmController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Void> createFarm(@RequestBody Farm farm){
+    public ResponseEntity<List<Farm>>createFarm(@RequestBody Farm farm){
         this.farmService.createFarm(farm);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
+        return new ResponseEntity<List<Farm>>(this.farmService.getAllFarms(), HttpStatus.CREATED);
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<List<Farm>> updateFarm(@RequestBody Farm farm){
+        printInputFarm(farm);
+        this.farmService.updateFarm(farm.getId(), farm);
+        return new ResponseEntity<List<Farm>>(farmService.getAllFarms(), HttpStatus.CREATED);
+    }
+private void printInputFarm(Farm farm) {
+    System.out.println("Input  attributes");
+    System.out.println("id: " + farm.getId());
+    System.out.println("name: " + farm.getName());
+    System.out.println("address: " + farm.getAddress());
+    System.out.println("description : " + farm.getDescription());
+    System.out.println("category : " + farm.getCategory());
+}
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteFarm(@PathVariable("id") int id){

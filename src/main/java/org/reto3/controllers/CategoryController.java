@@ -20,14 +20,12 @@ public class CategoryController {
     CategoryService categoryService;
 
     //Constructor
-    public CategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
+    public CategoryController(CategoryService categoryService) {this.categoryService = categoryService;}
 
     //Methods
     @GetMapping("/all")
     public ResponseEntity<List<Category>> getAllCategories(){
-        return new ResponseEntity<List<Category>>(this.categoryService.getListCategory(), HttpStatus.OK);
+        return new ResponseEntity<List<Category>>(this.categoryService .getAllCategories(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -38,16 +36,17 @@ public class CategoryController {
     @PostMapping("/save")
     public ResponseEntity<List<Category>> createCategory(@RequestBody Category categ){
         this.categoryService.createCategory(categ);
-        return new ResponseEntity<List<Category>>(this.categoryService.getListCategory(), HttpStatus.CREATED);
+        return new ResponseEntity<List<Category>>(this.categoryService.getAllCategories(), HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Void> updateCategory(@RequestBody Category category){
+    @PutMapping("/update")
+    public ResponseEntity<List<Category>> updateCategory(@RequestBody Category category){
         System.out.println("Input  attributes");
         System.out.println("id: " + category.getId());
         System.out.println("name: " + category.getName());
-        System.out.println("description " + category.getDescription());
+        System.out.println("description: " + category.getDescription());
         this.categoryService.updateCategory(category.getId(), category);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
+        return new ResponseEntity<List<Category>>(categoryService.getAllCategories(), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

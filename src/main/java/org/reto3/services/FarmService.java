@@ -22,7 +22,7 @@ public class FarmService {
 
 
     //CRUD Methods
-    public List<Farm> getListFarm() {return this.farmRepository.findAll();}
+    public List<Farm> getAllFarms() {return this.farmRepository.findAll();}
 
     public Farm getFarmById(int id) {
         Optional<Farm> requestedFarm = this.farmRepository.findById(id);

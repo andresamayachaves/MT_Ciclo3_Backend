@@ -1,5 +1,7 @@
 package org.reto3.entities;
 
+import org.reto3.services.ClientService;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -19,14 +21,18 @@ public class Message implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "client_id_client")
-    private Client client;
+    private Client  client;
 
-    public Client getClient() {
-        return client;
+    @Column(name = "client")
+    private Integer clientId;
+
+
+    public Integer getClient() {
+        return client.getIdClient();
     }
 
     public void setClient(Client client) {
-        this.client = client;
+        this.clientId = client.getIdClient();
     }
 
     //Constructor No-args

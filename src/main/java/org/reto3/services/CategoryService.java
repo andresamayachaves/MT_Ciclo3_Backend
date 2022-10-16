@@ -17,7 +17,7 @@ public class CategoryService {
 
     // CRUD Methods
 
-    public List<Category> getListCategory() {
+    public List<Category> getAllCategories() {
         return this.categoryRepository.findAll();
     }
 

@@ -13,7 +13,7 @@ public class MessageService {
 
     //Attributes
     @Autowired
-    private MessageRepository messageRepository;
+    private  MessageRepository messageRepository;
 
     //Constructor
     public MessageService(MessageRepository messageRepository) {
@@ -26,11 +26,9 @@ public class MessageService {
 
     public Message getMessageById(int id) {
         Optional<Message> selectedMessage = this.messageRepository.findById(id);
-        if(!selectedMessage.isEmpty()){
+        if(selectedMessage.isPresent()){
             return selectedMessage.get();
-        }else{
-            return null;
-        }
+        }else{return null;  }
     }
 
     public Message createMessage(Message newMessage) { return this.messageRepository.save(newMessage);}

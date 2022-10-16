@@ -26,19 +26,19 @@ public class MessageController {
 
     //Methods
     @GetMapping("/all")
-    public ResponseEntity<List<Message>> getMessage(){
+    public ResponseEntity<List<Message>> getAllMessages(){
         return new ResponseEntity<List<Message>>(this.messageService.getAllMessages(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public  ResponseEntity<Message>  getMessage(@PathVariable("id") int id) {
+    public  ResponseEntity<Message> getMessageById(@PathVariable("id") int id) {
         return new ResponseEntity<Message>(this.messageService.getMessageById(id), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Void> createMessage(@RequestBody Message message){
+    public ResponseEntity<List<Message>> createMessage(@RequestBody Message message){
         this.messageService.createMessage(message);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
+        return new ResponseEntity<List<Message>>(this.messageService.getAllMessages(), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
