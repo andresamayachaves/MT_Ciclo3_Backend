@@ -17,32 +17,33 @@ public class ReservationController {
 
     //Attributes
     @Autowired
-    ReservationService resertvationService;
+    ReservationService reservationService;
 
     //Constructor
     public ReservationController(ReservationService resertvationService) {
-        this.resertvationService = resertvationService;
+        this.reservationService = resertvationService;
     }
 
     //Methods
     @GetMapping("/all")
     public ResponseEntity<List<Reservation>> getReservation(){
-        return new ResponseEntity<List<Reservation>>(this.resertvationService.getAllReservations(), HttpStatus.OK);
+        return new ResponseEntity<List<Reservation>>(this.reservationService.getAllReservations(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public  ResponseEntity<List<Reservation>>  getReservation(@PathVariable("id") int id) {
-        return new ResponseEntity<List<Reservation>>(this.resertvationService.getReservationById(id), HttpStatus.OK);
+    public  ResponseEntity<Reservation>  getReservationById(@PathVariable("id") int id) {
+        return new ResponseEntity<Reservation>(this.reservationService.getReservationById(id), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<List<Reservation>> createReservation(@RequestBody Reservation reserv){
-        return  new ResponseEntity<List<Reservation>>(this.resertvationService.createReservation(reserv), HttpStatus.CREATED);
+    @PostMapping("save")
+    public ResponseEntity<Void> createReservation(@RequestBody Reservation reserv){
+        this.reservationService.createReservation(reserv);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteReservation(@PathVariable("id") int id){
-        this.resertvationService.deleteReservation(id);
+        this.reservationService.deleteReservation(id);
         return new ResponseEntity<String>("Reservation has been deleted", HttpStatus.NO_CONTENT);
     }
 }

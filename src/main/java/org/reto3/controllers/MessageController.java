@@ -31,13 +31,14 @@ public class MessageController {
     }
 
     @GetMapping("/{id}")
-    public  ResponseEntity<List<Message>>  getMessage(@PathVariable("id") int id) {
-        return new ResponseEntity<List<Message>>(this.messageService.getMessageById(id), HttpStatus.OK);
+    public  ResponseEntity<Message>  getMessage(@PathVariable("id") int id) {
+        return new ResponseEntity<Message>(this.messageService.getMessageById(id), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<List<Message>> createMessage(@RequestBody Message message){
-        return  new ResponseEntity<List<Message>>(this.messageService.createMessage(message), HttpStatus.CREATED);
+    @PostMapping("/save")
+    public ResponseEntity<Void> createMessage(@RequestBody Message message){
+        this.messageService.createMessage(message);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

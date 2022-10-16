@@ -32,13 +32,14 @@ public class FarmController {
     }
 
     @GetMapping("/{id}")
-    public  ResponseEntity<List<Farm>>  getFarm(@PathVariable("id") int id) {
-        return new ResponseEntity<List<Farm>>(this.farmService.getFarmById(id), HttpStatus.OK);
+    public  ResponseEntity<Farm>  getFarm(@PathVariable("id") int id) {
+        return new ResponseEntity<Farm>(this.farmService.getFarmById(id), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<List<Farm>> createFarm(@RequestBody Farm farm){
-        return  new ResponseEntity<List<Farm>>(this.farmService.createFarm(farm), HttpStatus.CREATED);
+    @PostMapping("/save")
+    public ResponseEntity<Void> createFarm(@RequestBody Farm farm){
+        this.farmService.createFarm(farm);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

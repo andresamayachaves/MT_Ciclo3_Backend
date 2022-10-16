@@ -17,6 +17,7 @@ import org.reto3.entities.Reservation;
 import org.reto3.repositories.ClientRepository;
 import org.reto3.repositories.ReservationRepository;
 
+@Service
 public class ReservationService {
 
     //Attributes
@@ -74,7 +75,7 @@ public class ReservationService {
         return this.reservationRepository.findAll();
     }
 
-    public Reservation getReservationbyId(int id) {
+    public Reservation getReservationById(int id) {
         if (!this.reservationRepository.findById(id).isEmpty()) {
             return this.reservationRepository.findById(id).get();
         } else {

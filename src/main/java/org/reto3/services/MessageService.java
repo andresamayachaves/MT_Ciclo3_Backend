@@ -3,10 +3,12 @@ package org.reto3.services;
 import org.reto3.entities.Message;
 import org.reto3.repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MessageService {
 
     //Attributes

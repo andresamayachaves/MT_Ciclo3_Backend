@@ -3,10 +3,12 @@ package org.reto3.services;
 import org.reto3.entities.Category;
 import org.reto3.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CategoryService {
 
     //Attributes

@@ -17,6 +17,18 @@ public class Message implements Serializable {
     @Column(name = "messageText")
     private String messageText;
 
+    @ManyToOne
+    @JoinColumn(name = "client_id_client")
+    private Client client;
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     //Constructor No-args
     public Message() {
     }
