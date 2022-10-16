@@ -2,6 +2,7 @@ package org.reto3.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "client")
@@ -9,25 +10,25 @@ public class Client implements Serializable {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Integer idClient;
+    private Integer idClient;
 
     @Column(name = "email")
-    private  String email;
+    private String email;
 
     @Column(name = "password")
-    private  String password;
+    private String password;
 
     @Column(name = "name")
-    private  String name;
+    private String name;
 
     @Column(name = "age")
-    private  Integer age;
+    private Integer age;
 
     @Column(name = "messages")
-    private  Message[] messages;
+    private Message[] messages;
 
     @Column(name = "reservations")
-    private  Reservation[] reservations;
+    private Reservation[] reservations;
 
     //Constructor No-args
     public Client() {

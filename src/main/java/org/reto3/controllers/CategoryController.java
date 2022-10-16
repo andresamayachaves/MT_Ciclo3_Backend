@@ -14,6 +14,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/Category")
 public class CategoryController {
+
+    //Attributes
     @Autowired
     CategoryService categoryService;
 
@@ -34,8 +36,8 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<List<Category>> createCategory(@RequestBody Category estudiante){
-        return  new ResponseEntity<List<Category>>(this.categoryService.createCategory(estudiante), HttpStatus.CREATED);
+    public ResponseEntity<List<Category>> createCategory(@RequestBody Category categ){
+        return  new ResponseEntity<List<Category>>(this.categoryService.createCategory(categ), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
