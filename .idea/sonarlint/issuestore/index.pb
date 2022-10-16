@@ -7,16 +7,6 @@ Z
 -src/main/java/org/reto3/entities/Message.java,3\c\3ce7ba0d19150a5515ffbed1b593993848617c45
 a
 1src/main/java/org/reto3/entities/Reservation.java,0\9\091b9014b896d5d108519e8d745523a65659e148
-b
-2src/main/java/org/reto3/repositories/FarmRepo.java,7\4\748fee5d9fc9a6e37245c872e0cc72059be694ca
-e
-5src/main/java/org/reto3/repositories/MessageRepo.java,e\0\e0ad6171739a717f3a7d9cb072cf2528351ab7cc
-i
-9src/main/java/org/reto3/repositories/ReservatopmRepo.java,5\1\515a8811ed4a55d97d25c2362d8e004a04e44beb
-d
-4src/main/java/org/reto3/repositories/ClientRepo.java,3\7\377b3e2c0277cf4a282cd3a42d80bd1c12b1cd40
-f
-6src/main/java/org/reto3/repositories/CategoryRepo.java,1\0\10a0d8c42262c9b206d246a092f5c806083ff185
 ^
 .src/main/java/org/reto3/entities/Category.java,b\4\b4937d0c11036cc4c2fe7dea765281e04e63f526
 e
