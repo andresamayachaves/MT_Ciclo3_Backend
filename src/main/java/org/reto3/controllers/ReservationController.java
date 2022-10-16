@@ -27,7 +27,7 @@ public class ReservationController {
     //Methods
     @GetMapping("/all")
     public ResponseEntity<List<Reservation>> getReservation(){
-        return new ResponseEntity<List<Reservation>>(this.resertvationService.getListReservation(), HttpStatus.OK);
+        return new ResponseEntity<List<Reservation>>(this.resertvationService.getAllReservations(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

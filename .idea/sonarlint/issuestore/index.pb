@@ -5,10 +5,6 @@ Z
 *src/main/java/org/reto3/entities/Farm.java,6\2\62244f7374d6d07a6f24c3d9dfdb022582fad256
 ]
 -src/main/java/org/reto3/entities/Message.java,3\c\3ce7ba0d19150a5515ffbed1b593993848617c45
-a
-1src/main/java/org/reto3/entities/Reservation.java,0\9\091b9014b896d5d108519e8d745523a65659e148
-\
-,src/main/java/org/reto3/entities/Client.java,0\6\063813217d78ec2f5ab41d91e394c697406bc47c
 g
 7src/main/java/org/reto3/controllers/FarmController.java,1\6\167ed40df4404d9f57d7abd65e8a8d7c5392a475
 Q
@@ -19,10 +15,6 @@ k
 ;src/main/java/org/reto3/repositories/MessageRepository.java,3\d\3de220cdf0b163672f9f4b60bcebccd888e17fd9
 h
 8src/main/java/org/reto3/repositories/FarmRepository.java,0\d\0dd385f406402d57f04ab1a6375b35ba8a397cdd
-j
-:src/main/java/org/reto3/repositories/ClientRepository.java,6\0\6002cf4ef58232813a986c0e6e010eacff1739fd
-o
-?src/main/java/org/reto3/repositories/ReservationRepository.java,2\c\2c24d8fc1364261a0c08dde851068de5f8d06c49
 l
 <src/main/java/org/reto3/repositories/CategoryRepository.java,2\b\2bc8861269bc4a0016a5e76217f979a4bbd085c8
 ^

@@ -1,8 +1,12 @@
 package org.reto3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "client")
@@ -25,17 +29,21 @@ public class Client implements Serializable {
     private Integer age;
 
     @Column(name = "messages")
-    private Message[] messages;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private Set<Message> messages = new HashSet<>();
 
     @Column(name = "reservations")
-    private Reservation[] reservations;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = {"client"})
+    private Set<Reservation> reservations = new HashSet<>();
 
     //Constructor No-args
     public Client() {
     }
 
     //Constructor
-    public Client(Integer idClient, String email, String password, String name, Integer age, Message[] messages, Reservation[] reservations) {
+
+    public Client(Integer idClient, String email, String password, String name, Integer age, Set<Message> messages, Set<Reservation> reservations) {
         this.idClient = idClient;
         this.email = email;
         this.password = password;
@@ -44,6 +52,7 @@ public class Client implements Serializable {
         this.messages = messages;
         this.reservations = reservations;
     }
+
 
     //Getters and Setters
 
@@ -87,19 +96,19 @@ public class Client implements Serializable {
         this.age = age;
     }
 
-    public Message[] getMessages() {
+    public Set<Message> getMessages() {
         return messages;
     }
 
-    public void setMessages(Message[] messages) {
+    public void setMessages(Set<Message> messages) {
         this.messages = messages;
     }
 
-    public Reservation[] getReservations() {
+    public Set<Reservation> getReservations() {
         return reservations;
     }
 
-    public void setReservations(Reservation[] reservations) {
+    public void setReservations(Set<Reservation>reservations) {
         this.reservations = reservations;
     }
 }

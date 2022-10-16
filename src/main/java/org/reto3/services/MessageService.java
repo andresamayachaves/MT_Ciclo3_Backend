@@ -31,7 +31,7 @@ public class MessageService {
         }
     }
 
-    public Message createMessage(Message newMessage) { return ºthis.messageRepository.save(newMessage);}
+    public Message createMessage(Message newMessage) { return this.messageRepository.save(newMessage);}
 
     public void updateMessage (int idMessage, Message capturedMessage){
         Optional<Message> messageToUpdate = this.messageRepository.findById(idMessage);
@@ -43,8 +43,8 @@ public class MessageService {
     }
 
     private void setAllAtts(Message fmToUpdate, Message newData){
-        if(newData.getIdMessage() != null)       fmToUpdate.setName(newData.getIdMessage());
-        if(newData.getMessageText() != null)        fmToUpdate.setAddress(newData.getMessageText());
+        if(newData.getIdMessage() != null)       fmToUpdate.setIdMessage(newData.getIdMessage());
+        if(newData.getMessageText() != null)        fmToUpdate.setMessageText(newData.getMessageText());
     }
 
     public void deleteMessage(int id) {
