@@ -10,7 +10,7 @@ public class Category implements Serializable {
 
     // Attributes
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="seq")
     private  Integer id;
 
     @Column(name = "name")

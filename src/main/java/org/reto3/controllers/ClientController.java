@@ -42,13 +42,13 @@ public class ClientController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Void> actualizarClient(@RequestBody Client client){
+    public ResponseEntity<Void> updateClient(@RequestBody Client client){
         this.clientService.updateClient(client.getIdClient(), client);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarClient(@PathVariable("id") int id){
+    public ResponseEntity<Void> deleteClient(@PathVariable("id") int id){
         this.clientService.deleteClient(id);
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }

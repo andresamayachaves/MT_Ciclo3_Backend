@@ -35,14 +35,14 @@ public class CategoryController {
         return new ResponseEntity<Category>(this.categoryService.getCategoryById(id), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<Void> createCategory(@RequestBody Category categ){
+    @PostMapping("/save")
+    public ResponseEntity<List<Category>> createCategory(@RequestBody Category categ){
         this.categoryService.createCategory(categ);
-        return  new ResponseEntity<Void>(HttpStatus.CREATED);
+        return new ResponseEntity<List<Category>>(this.categoryService.getListCategory(), HttpStatus.CREATED);
     }
 
     public ResponseEntity<Void> updateCategory(@RequestBody Category category){
-        System.out.println("Inpt  attriubutes");
+        System.out.println("Input  attributes");
         System.out.println("id: " + category.getId());
         System.out.println("name: " + category.getName());
         System.out.println("description " + category.getDescription());

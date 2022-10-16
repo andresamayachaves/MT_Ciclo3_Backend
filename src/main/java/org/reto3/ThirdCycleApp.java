@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ThirdCycleApp {
     public static void main(String[] args) {
-        System.out.println("Begining Properly!");
+        System.out.println("Beginning Properly!");
         SpringApplication.run(ThirdCycleApp.class, args);
     }
 }
