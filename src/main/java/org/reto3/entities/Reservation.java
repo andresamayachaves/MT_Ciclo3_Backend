@@ -27,12 +27,12 @@ public class Reservation implements Serializable {
     private String score;
 
     //RelationShips
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"reservations"})
     @JoinColumn(name = "farm_id")
     private Farm farm;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"messages", "reservations"})
     @JoinColumn(name = "client_id")
     private Client client;

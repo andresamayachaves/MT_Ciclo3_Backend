@@ -41,9 +41,15 @@ public class ReservationController {
         return new ResponseEntity<List<Reservation>>(this.reservationService.getAllReservations(), HttpStatus.CREATED);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<List<Reservation>> updateReservation(@RequestBody Reservation reservation){
+        this.reservationService.updateReservation(reservation.getIdReservation(), reservation);
+        return new ResponseEntity<List<Reservation>>(reservationService.getAllReservations(), HttpStatus.CREATED);
+    }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteReservation(@PathVariable("id") int id){
+    public ResponseEntity<Void> deleteReservation(@PathVariable("id") int id){
         this.reservationService.deleteReservation(id);
-        return new ResponseEntity<String>("Reservation has been deleted", HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 }

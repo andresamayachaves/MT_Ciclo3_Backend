@@ -38,7 +38,8 @@ public class FarmController {
 
     @PostMapping("/save")
     public ResponseEntity<List<Farm>>createFarm(@RequestBody Farm farm){
-        this.farmService.createFarm(farm);
+        Farm fullFarm = this.farmService.categoryTransformation(farm);
+        this.farmService.createFarm(fullFarm);
         return new ResponseEntity<List<Farm>>(this.farmService.getAllFarms(), HttpStatus.CREATED);
     }
 

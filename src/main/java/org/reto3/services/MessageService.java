@@ -42,7 +42,6 @@ public class MessageService {
     }
 
     public Message createMessage(Message newMessage) {
-        newMessage.printAllAtts();
         return this.messageRepository.save(newMessage);}
 
     public void updateMessage (int idMessage, Message capturedMessage){
@@ -62,13 +61,17 @@ public class MessageService {
     }
 
     public void deleteMessage(int id) {
-        if(this.messageRepository.findById(id).isPresent())   this.messageRepository.deleteById(id);
+       Optional toDelete = this.messageRepository.findById(id);
+        if(!toDelete.isEmpty()){
+            this.messageRepository.delete((Message) toDelete.get());
+        }
     }
     public Message addNextIdToMessage(Message messageIn) {
 
         Message messageOut = new Message();
+        Integer newId = Integer.valueOf( String.valueOf(messageRepository.count()))+1;
 
-        messageOut.setIdMessage(messageRepository.count()+1);
+        messageOut.setIdMessage(newId);
         messageOut.setMessageText(messageIn.getMessageText());
         messageOut.setClient(messageIn.getClient());
         messageOut.setFarm(messageIn.getFarm());

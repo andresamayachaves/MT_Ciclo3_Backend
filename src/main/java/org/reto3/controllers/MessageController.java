@@ -1,6 +1,7 @@
 package org.reto3.controllers;
 
 import org.reto3.entities.Message;
+import org.reto3.entities.Message;
 import org.reto3.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,14 +39,19 @@ public class MessageController {
     @PostMapping("/save")
     public ResponseEntity<List<Message>> createMessage(@RequestBody Message message){
         Message fullMessage =  messageService.addNextIdToMessage(message);
-        fullMessage.printAllAtts();
         this.messageService.createMessage(fullMessage);
         return new ResponseEntity<List<Message>>(this.messageService.getAllMessages(), HttpStatus.CREATED);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<List<Message>> updateMessage(@RequestBody Message message){
+        this.messageService.updateMessage(message.getIdMessage(), message);
+        return new ResponseEntity<List<Message>>(messageService.getAllMessages(), HttpStatus.CREATED);
+    }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteMessage(@PathVariable("id") int id){
+    public ResponseEntity<Void> deleteMessage(@PathVariable("id") int id){
         this.messageService.deleteMessage(id);
-        return new ResponseEntity<String>("Message has been deleted", HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 }

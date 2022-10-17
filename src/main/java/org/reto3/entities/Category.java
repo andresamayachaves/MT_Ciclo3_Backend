@@ -1,23 +1,27 @@
 package org.reto3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "farm")
+@Table(name = "category")
 public class Category implements Serializable {
 
     // Attributes
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Integer id;
 
     @Column(name = "name")
     private  String name;
 
-    @Column(name = "farms")
-    private Farm[] farms;
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER) //(mappedBy = "category", cascade = CascadeType.ALL)  //, fetch=FetchType.EAGER)
+    //@JsonIgnoreProperties(value={"farm","category"})
+    private Set<Farm> farms = new HashSet<>();
 
     @Column(name = "description")
     private String description;
@@ -26,15 +30,12 @@ public class Category implements Serializable {
     public Category() {
     }
 
-    //Constructor
-    public Category(Integer id, String name, Farm[] farms) {
+    //Constructor with Id
+    public Category(Integer id) {
         this.id = id;
-        this.name = name;
-        this.farms = farms;
     }
 
-
-    //Getters and Setters
+//Getters and Setters
 
     public Integer getId() {
         return id;
@@ -52,11 +53,11 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public Farm[] getFarms() {
+    public Set<Farm> getFarms() {
         return farms;
     }
 
-    public void setFarms(Farm[] farms) {
+    public void setFarms(Set<Farm> farms) {
         this.farms = farms;
     }
 

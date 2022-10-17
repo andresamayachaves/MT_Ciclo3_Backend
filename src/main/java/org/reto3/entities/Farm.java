@@ -1,7 +1,11 @@
 package org.reto3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "farm")
@@ -23,8 +27,19 @@ public class Farm implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "category")
+    //Relationships
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = {"farms"})
+    @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties(value = {"client", "farm"})
+    private Set<Message> messages = new HashSet<>();
+
+    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Reservation> reservations = new HashSet<>();
+
 
     //Constructor No-args
     public Farm() {

@@ -10,32 +10,27 @@ import java.io.Serializable;
 @Entity
 @Table(name = "message")
 public class Message implements Serializable {
+
     // Attributes
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private  int idMessage;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Integer idMessage;
 
     @Column(name = "messageText")
     private String messageText;
 
     //Relationships
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"messages", "reservations"})
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"messages", "reservations"})
     @JoinColumn(name = "farm_id")
     private Farm farm;
 
-    //Methods
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {this.client = client;}
 
     //Constructor No-args
     public Message() {
@@ -55,16 +50,8 @@ public class Message implements Serializable {
         return idMessage;
     }
 
-    public void setIdMessage(long idMessage) {
-        this.idMessage = Math.toIntExact(idMessage);
-    }
-
-    public Farm getFarm() {
-        return farm;
-    }
-
-    public void setFarm(Farm farm) {
-        this.farm = farm;
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
     }
 
     public String getMessageText() {
@@ -75,6 +62,22 @@ public class Message implements Serializable {
         this.messageText = messageText;
     }
 
-    public void printAllAtts(){MessageService.printAllAtts(this);}
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Farm getFarm() {
+        return farm;
+    }
+
+    public void setFarm(Farm farm) {
+        this.farm = farm;
+    }
+
+   //public void printAllAtts(){MessageService.printAllAtts(this);}
 
 }

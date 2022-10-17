@@ -1,5 +1,6 @@
 package org.reto3.services;
 
+import org.reto3.entities.Category;
 import org.reto3.entities.Farm;
 import org.reto3.repositories.FarmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class FarmService {
     //Attributes
     @Autowired
     private FarmRepository farmRepository;
+
+    @Autowired
+    private CategoryService categoryService;
 
     //Constructor
     public FarmService(FarmRepository farmRepository) {
@@ -50,5 +54,12 @@ public class FarmService {
 
     public void deleteFarm(int id) {
         if(this.farmRepository.findById(id).isPresent())     this.farmRepository.deleteById(id);
+    }
+
+    public Farm categoryTransformation(Farm farmIn) {
+        Category fullCategory = categoryService.getCategoryById(farmIn.getCategory().getId());
+        return new Farm(farmIn.getId(), farmIn.getName(),
+                farmIn.getAddress(), farmIn.getExtension(),
+                farmIn.getDescription(),fullCategory );
     }
 }
