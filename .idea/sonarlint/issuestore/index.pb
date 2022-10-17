@@ -1,23 +1,7 @@
 
-b
-2src/main/java/org/reto3/entities/ReportClient.java,a\d\ad64ffd5e48839772154c228db49b9735d1ee733
-o
-?src/main/java/org/reto3/repositories/ReservationRepository.java,2\c\2c24d8fc1364261a0c08dde851068de5f8d06c49
-h
-8src/main/java/org/reto3/services/ReservationService.java,1\6\169f173062512508bab8abdcc582ce88a20f2646
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 j
 :src/main/java/org/reto3/repositories/ClientRepository.java,6\0\6002cf4ef58232813a986c0e6e010eacff1739fd
-\
-,src/main/java/org/reto3/entities/Client.java,0\6\063813217d78ec2f5ab41d91e394c697406bc47c
-]
--src/main/java/org/reto3/entities/Message.java,3\c\3ce7ba0d19150a5515ffbed1b593993848617c45
 j
 :src/main/java/org/reto3/controllers/MessageController.java,3\d\3dc0e86b27c63ea9f8d4af5b8e765899bb244ad6
-d
-4src/main/java/org/reto3/services/MessageService.java,d\7\d76e0752b80f64038d89de01d22358df2bc57911
-k
-;src/main/java/org/reto3/repositories/MessageRepository.java,3\d\3de220cdf0b163672f9f4b60bcebccd888e17fd9
-a
-1src/main/java/org/reto3/entities/Reservation.java,0\9\091b9014b896d5d108519e8d745523a65659e148

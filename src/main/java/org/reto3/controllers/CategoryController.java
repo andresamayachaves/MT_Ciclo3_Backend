@@ -35,6 +35,7 @@ public class CategoryController {
 
     @PostMapping("/save")
     public ResponseEntity<List<Category>> createCategory(@RequestBody Category categ){
+        //Category fullCategory = this.categoryService.completeCategory(categ);
         this.categoryService.createCategory(categ);
         return new ResponseEntity<List<Category>>(this.categoryService.getAllCategories(), HttpStatus.CREATED);
     }

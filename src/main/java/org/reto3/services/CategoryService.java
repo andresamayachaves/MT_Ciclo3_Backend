@@ -1,6 +1,8 @@
 package org.reto3.services;
 
 import org.reto3.entities.Category;
+import org.reto3.entities.Farm;
+import org.reto3.entities.Message;
 import org.reto3.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,7 +50,19 @@ public class CategoryService {
 
     public void deleteCategory(int id) {
         if(!this.categoryRepository.findById(id).isEmpty()){
-            this.categoryRepository.deleteById(id);
+            this.categoryRepository.deleteById(id );
         }
+    }
+
+    public Category completeCategory(Category categoryIn) {
+        Category categoryOut = new Category();
+        Integer newId = Integer.valueOf( String.valueOf(categoryRepository.count()))+1;
+        System.out.println(newId);
+
+        categoryOut.setId(newId);
+        categoryOut.setName(categoryIn.getName());
+        categoryOut.setDescription(categoryIn.getDescription());
+        categoryOut.setFarms(categoryIn.getFarms());
+        return categoryOut;
     }
 }

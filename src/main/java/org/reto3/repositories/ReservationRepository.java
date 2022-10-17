@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ReservationRepository  extends JpaRepository<Reservation, Integer> {
     public List<Reservation> findByStartDateBetween(Date start, Date end);
-    public List<Reservation> findByStatus(String status);
+    //public List<Reservation> findByStatus(String status);
 }

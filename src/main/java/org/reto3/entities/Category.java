@@ -13,14 +13,16 @@ public class Category implements Serializable {
 
     // Attributes
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private  Integer id;
 
     @Column(name = "name")
     private  String name;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER) //(mappedBy = "category", cascade = CascadeType.ALL)  //, fetch=FetchType.EAGER)
-    //@JsonIgnoreProperties(value={"farm","category"})
+//    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch=FetchType.EAGER) //(mappedBy = "category", cascade = CascadeType.ALL)  //, fetch=FetchType.EAGER)
+//    @JsonIgnoreProperties(value={"farms","category"})
+    @OneToMany(fetch=FetchType.EAGER)
+    @JsonIgnoreProperties("category")
     private Set<Farm> farms = new HashSet<>();
 
     @Column(name = "description")

@@ -20,21 +20,25 @@ public class Reservation implements Serializable {
     @Column(name = "devolutionDate")
     private  Date devolutionDate;
 
-    @Column(name = "status")
-    private  String status;
-
-    @Column(name = "score")
-    private String score;
+//    @Column(name = "status")
+//    private  String status;
+//
+//    @Column(name = "score")
+//    private String score;
 
     //RelationShips
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = {"reservations"})
+//    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+//    @JsonIgnoreProperties(value = {"reservations"})
+//    @JoinColumn(name = "farm_id")
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "farm_id")
     private Farm farm;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = {"messages", "reservations"})
-    @JoinColumn(name = "client_id")
+//    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+//    @JsonIgnoreProperties(value = {"messages", "reservations"})
+//    @JoinColumn(name = "client_id")
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name = "client_id_client")
     private Client client;
 
     //Constructor No-args
@@ -47,7 +51,7 @@ public class Reservation implements Serializable {
         this.idReservation = idReservation;
         this.startDate = startDate;
         this.devolutionDate = devolutionDate;
-        this.status = status;
+//        this.status = status;
         this.farm = farm;
         this.client = client;
     }
@@ -79,21 +83,21 @@ public class Reservation implements Serializable {
         this.devolutionDate = devolutionDate;
     }
 
-    public String getStatus() {
-        return status;
-    }
+//    public String getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(String status) {
+//        this.status = status;
+//    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getScore() {
-        return score;
-    }
-
-    public void setScore(String score) {
-        this.score = score;
-    }
+//    public String getScore() {
+//        return score;
+//    }
+//
+//    public void setScore(String score) {
+//        this.score = score;
+//    }
 
     public Farm getFarm() {
         return farm;

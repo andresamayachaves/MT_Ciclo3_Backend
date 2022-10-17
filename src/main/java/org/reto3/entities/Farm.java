@@ -28,16 +28,22 @@ public class Farm implements Serializable {
     private String description;
 
     //Relationships
-    @ManyToOne (fetch = FetchType.LAZY)
+//    @ManyToOne (optional = false, fetch = FetchType.LAZY)
+//    @JsonIgnoreProperties(value = {"categories"})
+//    @JoinColumn(name = "category_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = {"farms"})
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JsonIgnoreProperties(value = {"client", "farm"})
+    @OneToMany(fetch=FetchType.EAGER)
     @JsonIgnoreProperties(value = {"client", "farm"})
     private Set<Message> messages = new HashSet<>();
 
-    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(fetch=FetchType.EAGER)
     private Set<Reservation> reservations = new HashSet<>();
 
 

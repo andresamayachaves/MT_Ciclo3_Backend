@@ -28,12 +28,14 @@ public class Client implements Serializable {
     private Integer age;
 
     //Relationships
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties(value = {"client"})
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonIgnoreProperties(value = {"client"})
+    @OneToMany(fetch=FetchType.EAGER)
     private Set<Message> messages = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client", cascade = CascadeType.ALL,  orphanRemoval = true)
-    @JsonIgnoreProperties(value = {"client"})
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client", cascade = CascadeType.ALL,  orphanRemoval = true)
+//    @JsonIgnoreProperties(value = {"client"})
+    @OneToMany(fetch=FetchType.EAGER)
     private Set<Reservation> reservations = new HashSet<>();
 
 

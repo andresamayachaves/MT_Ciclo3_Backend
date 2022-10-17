@@ -21,12 +21,18 @@ public class Message implements Serializable {
 
     //Relationships
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+//    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+//    @JsonIgnoreProperties(value = {"messages", "reservations"})
+//    @JoinColumn(name = "client_id")
+    @ManyToOne(fetch=FetchType.EAGER)
     @JsonIgnoreProperties(value = {"messages", "reservations"})
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id_client")
     private Client client;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+//    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+//    @JsonIgnoreProperties(value = {"messages", "reservations"})
+//    @JoinColumn(name = "farm_id")
+    @ManyToOne(fetch=FetchType.EAGER)
     @JsonIgnoreProperties(value = {"messages", "reservations"})
     @JoinColumn(name = "farm_id")
     private Farm farm;
