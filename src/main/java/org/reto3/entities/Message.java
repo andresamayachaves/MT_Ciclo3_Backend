@@ -1,6 +1,8 @@
 package org.reto3.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.reto3.services.MessageService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,7 +13,7 @@ public class Message implements Serializable {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Integer idMessage;
+    private  int idMessage;
 
     @Column(name = "messageText")
     private String messageText;
@@ -20,12 +22,12 @@ public class Message implements Serializable {
 
     @ManyToOne(optional = false)
     @JsonIgnoreProperties(value = {"messages", "reservations"})
-    @JoinColumn(name = "idClient")
+    @JoinColumn(name = "client_id")
     private Client client;
 
     @ManyToOne(optional = false)
     @JsonIgnoreProperties(value = {"messages", "reservations"})
-    @JoinColumn(name = "idFarm")
+    @JoinColumn(name = "farm_id")
     private Farm farm;
 
     //Methods
@@ -72,4 +74,7 @@ public class Message implements Serializable {
     public void setMessageText(String messageText) {
         this.messageText = messageText;
     }
+
+    public void printAllAtts(){MessageService.printAllAtts(this);}
+
 }

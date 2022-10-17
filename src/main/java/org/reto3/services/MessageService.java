@@ -41,11 +41,13 @@ public class MessageService {
         }else{return null;  }
     }
 
-    public Message createMessage(Message newMessage) { return this.messageRepository.save(newMessage);}
+    public Message createMessage(Message newMessage) {
+        newMessage.printAllAtts();
+        return this.messageRepository.save(newMessage);}
 
     public void updateMessage (int idMessage, Message capturedMessage){
         Optional<Message> messageToUpdate = this.messageRepository.findById(idMessage);
-        if(!messageToUpdate.isEmpty()){
+        if(messageToUpdate.isPresent()){
                 Message messageDB = messageToUpdate.get();
                 setAllAtts(messageDB, capturedMessage);
                 this.messageRepository.save(messageDB);
@@ -60,16 +62,25 @@ public class MessageService {
     }
 
     public void deleteMessage(int id) {
-        if(!this.messageRepository.findById(id).isEmpty())   this.messageRepository.deleteById(id);
+        if(this.messageRepository.findById(id).isPresent())   this.messageRepository.deleteById(id);
     }
     public Message addNextIdToMessage(Message messageIn) {
-        Client clientIdToFind = messageIn.getClient();
-        messageIn.setClient(clientIdToFind);
-        Farm farmIdToFind = messageIn.getFarm();
-        messageIn.setFarm(farmIdToFind);
 
-        messageIn.setIdMessage(messageRepository.count()+1);
+        Message messageOut = new Message();
 
-        return  messageIn;
+        messageOut.setIdMessage(messageRepository.count()+1);
+        messageOut.setMessageText(messageIn.getMessageText());
+        messageOut.setClient(messageIn.getClient());
+        messageOut.setFarm(messageIn.getFarm());
+
+        printAllAtts(messageOut);
+        return  messageOut;
+    }
+
+    public static void printAllAtts(Message msgToPrint) {
+        System.out.println(msgToPrint.getIdMessage());
+        System.out.println(msgToPrint.getMessageText());
+        System.out.println(msgToPrint.getClient().getIdClient().toString());
+        System.out.println(msgToPrint.getFarm().getId().toString());
     }
 }

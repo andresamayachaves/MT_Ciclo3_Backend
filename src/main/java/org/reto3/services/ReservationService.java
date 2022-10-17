@@ -88,13 +88,13 @@ public class ReservationService {
     }
 
     public void deleteReservation(int id) {
-        if (!this.reservationRepository.findById(id).isEmpty()) {
+        if (this.reservationRepository.findById(id).isPresent()) {
             this.reservationRepository.deleteById(id);
         }
     }
 
     public void updateReservation(int id, Reservation reservation) {
-        if (!this.reservationRepository.findById(id).isEmpty()) {
+        if (this.reservationRepository.findById(id).isPresent()) {
             Reservation reservationDB = this.reservationRepository.findById(id).get();
 
             this.reservationRepository.save(reservationDB);

@@ -48,5 +48,7 @@ public class FarmService {
         if(newData.getExtension() != null)           fmToUpdate.setExtension(newData.getExtension());
     }
 
-    public void deleteFarm(int id) {  if(!this.farmRepository.findById(id).isEmpty())     this.farmRepository.deleteById(id); }
+    public void deleteFarm(int id) {
+        if(this.farmRepository.findById(id).isPresent())     this.farmRepository.deleteById(id);
+    }
 }
