@@ -22,7 +22,7 @@ public class CategoryService {
     }
 
     public Category  getCategoryById(int id){
-        if(!this.categoryRepository.findById(id).isEmpty()){
+        if(this.categoryRepository.findById(id).isPresent()){
             return this.categoryRepository.findById(id).get();
         }else{
             return null;

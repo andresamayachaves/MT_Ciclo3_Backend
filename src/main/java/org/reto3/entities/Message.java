@@ -1,6 +1,6 @@
 package org.reto3.entities;
 
-import org.reto3.services.ClientService;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,27 +13,27 @@ public class Message implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  Integer idMessage;
 
-    @Column(name = "farm")
-    private  Farm farm;
-
     @Column(name = "messageText")
     private String messageText;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id_client")
-    private Client  client;
+    //Relationships
 
-    @Column(name = "client")
-    private Integer clientId;
+    @ManyToOne(optional = false)
+    @JsonIgnoreProperties(value = {"messages", "reservations"})
+    @JoinColumn(name = "idClient")
+    private Client client;
 
+    @ManyToOne(optional = false)
+    @JsonIgnoreProperties(value = {"messages", "reservations"})
+    @JoinColumn(name = "idFarm")
+    private Farm farm;
 
-    public Integer getClient() {
-        return client.getIdClient();
+    //Methods
+    public Client getClient() {
+        return client;
     }
 
-    public void setClient(Client client) {
-        this.clientId = client.getIdClient();
-    }
+    public void setClient(Client client) {this.client = client;}
 
     //Constructor No-args
     public Message() {
@@ -53,8 +53,8 @@ public class Message implements Serializable {
         return idMessage;
     }
 
-    public void setIdMessage(Integer idMessage) {
-        this.idMessage = idMessage;
+    public void setIdMessage(long idMessage) {
+        this.idMessage = Math.toIntExact(idMessage);
     }
 
     public Farm getFarm() {

@@ -37,7 +37,8 @@ public class MessageController {
 
     @PostMapping("/save")
     public ResponseEntity<List<Message>> createMessage(@RequestBody Message message){
-        this.messageService.createMessage(message);
+        Message fullMessage =  messageService.addNextIdToMessage(message);
+        this.messageService.createMessage(fullMessage);
         return new ResponseEntity<List<Message>>(this.messageService.getAllMessages(), HttpStatus.CREATED);
     }
 

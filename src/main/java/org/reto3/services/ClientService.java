@@ -17,6 +17,7 @@ public class ClientService {
 
     //CRUD Methods
     public List<Client> getAllClients() {
+        System.out.println("EveryTh ok 'til Here");
         return this.clientRepository.findAll();
     }
 

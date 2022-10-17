@@ -1,5 +1,7 @@
 package org.reto3.services;
 
+import org.reto3.entities.Client;
+import org.reto3.entities.Farm;
 import org.reto3.entities.Message;
 import org.reto3.repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,18 @@ public class MessageService {
     @Autowired
     private  MessageRepository messageRepository;
 
+    @Autowired
+    private ClientService clientService;
+
+    @Autowired
+    private FarmService farmService;
+
     //Constructor
     public MessageService(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
     }
+
+
     //CRUD Methods
     public List<Message> getAllMessages(){
         return this.messageRepository.findAll();
@@ -42,12 +52,24 @@ public class MessageService {
         }
     }
 
-    private void setAllAtts(Message fmToUpdate, Message newData){
-        if(newData.getIdMessage() != null)       fmToUpdate.setIdMessage(newData.getIdMessage());
-        if(newData.getMessageText() != null)        fmToUpdate.setMessageText(newData.getMessageText());
+    private void setAllAtts(Message msgToUpdate, Message newData){
+        if(newData.getIdMessage() != null)       msgToUpdate.setIdMessage(newData.getIdMessage());
+        if(newData.getMessageText() != null)        msgToUpdate.setMessageText(newData.getMessageText());
+        if(newData.getClient() != null)        msgToUpdate.setClient(newData.getClient());
+        if(newData.getFarm()  != null)        msgToUpdate.setFarm(newData.getFarm());
     }
 
     public void deleteMessage(int id) {
         if(!this.messageRepository.findById(id).isEmpty())   this.messageRepository.deleteById(id);
+    }
+    public Message addNextIdToMessage(Message messageIn) {
+        Client clientIdToFind = messageIn.getClient();
+        messageIn.setClient(clientIdToFind);
+        Farm farmIdToFind = messageIn.getFarm();
+        messageIn.setFarm(farmIdToFind);
+
+        messageIn.setIdMessage(messageRepository.count()+1);
+
+        return  messageIn;
     }
 }

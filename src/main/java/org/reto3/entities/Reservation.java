@@ -1,5 +1,7 @@
 package org.reto3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -21,11 +23,19 @@ public class Reservation implements Serializable {
     @Column(name = "status")
     private  String status;
 
-    @Column(name = "farm")
-    private  Farm farm;
+    @Column(name = "score")
+    private String score;
 
-    @Column(name = "client")
-    private  Farm client;
+    //RelationShips
+    @ManyToOne(optional = false)
+    @JsonIgnoreProperties(value = {"reservations"})
+    @JoinColumn(name = "farm_id")
+    private Farm farm;
+
+    @ManyToOne(optional = false)
+    @JsonIgnoreProperties(value = {"messages", "reservations"})
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     //Constructor No-args
     public Reservation() {
@@ -33,7 +43,7 @@ public class Reservation implements Serializable {
 
     //Constructor
 
-    public Reservation(Integer idReservation, Date startDate, Date devolutionDate, String status, Farm farm, Farm client) {
+    public Reservation(Integer idReservation, Date startDate, Date devolutionDate, String status, Farm farm, Client client) {
         this.idReservation = idReservation;
         this.startDate = startDate;
         this.devolutionDate = devolutionDate;
@@ -44,7 +54,6 @@ public class Reservation implements Serializable {
 
 
     //Getters and Setters
-
 
     public Integer getIdReservation() {
         return idReservation;
@@ -78,6 +87,14 @@ public class Reservation implements Serializable {
         this.status = status;
     }
 
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
     public Farm getFarm() {
         return farm;
     }
@@ -86,11 +103,11 @@ public class Reservation implements Serializable {
         this.farm = farm;
     }
 
-    public Farm getClient() {
+    public Client getClient() {
         return client;
     }
 
-    public void setClient(Farm client) {
+    public void setClient(Client client) {
         this.client = client;
     }
 }

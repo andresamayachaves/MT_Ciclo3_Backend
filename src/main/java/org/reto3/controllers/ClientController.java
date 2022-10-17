@@ -12,6 +12,7 @@ import java.util.List;
 
 @Service
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/Client")
 public class ClientController {
 
@@ -22,7 +23,7 @@ public class ClientController {
     //Constructor
     public ClientController(ClientService clientService) {this.clientService = clientService;}
 
-    //Methods
+    //CRUD Methods
     @GetMapping("/all")
     public ResponseEntity<List<Client>> getAllClients(){
         return new ResponseEntity<List<Client>>(this.clientService.getAllClients(), HttpStatus.OK);
