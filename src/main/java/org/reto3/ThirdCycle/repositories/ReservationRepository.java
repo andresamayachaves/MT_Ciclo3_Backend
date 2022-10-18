@@ -1,6 +1,6 @@
-package org.reto3.repositories;
+package org.reto3.ThirdCycle.repositories;
 
-import org.reto3.entities.Reservation;
+import org.reto3.ThirdCycle.entities.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Date;
 import java.util.List;

@@ -1,7 +1,7 @@
-package org.reto3.controllers;
+package org.reto3.ThirdCycle.controllers;
 
-import org.reto3.entities.Client;
-import org.reto3.services.ClientService;
+import org.reto3.ThirdCycle.entities.Client;
+import org.reto3.ThirdCycle.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

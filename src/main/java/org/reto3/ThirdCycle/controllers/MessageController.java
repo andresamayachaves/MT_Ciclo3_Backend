@@ -1,8 +1,7 @@
-package org.reto3.controllers;
+package org.reto3.ThirdCycle.controllers;
 
-import org.reto3.entities.Message;
-import org.reto3.entities.Message;
-import org.reto3.services.MessageService;
+import org.reto3.ThirdCycle.entities.Message;
+import org.reto3.ThirdCycle.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

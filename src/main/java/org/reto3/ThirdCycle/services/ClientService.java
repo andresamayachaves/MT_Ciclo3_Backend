@@ -1,7 +1,7 @@
-package org.reto3.services;
+package org.reto3.ThirdCycle.services;
 
-import org.reto3.entities.Client;
-import org.reto3.repositories.ClientRepository;
+import org.reto3.ThirdCycle.repositories.ClientRepository;
+import org.reto3.ThirdCycle.entities.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

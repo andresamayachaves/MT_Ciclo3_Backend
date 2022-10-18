@@ -1,9 +1,7 @@
-package org.reto3.services;
+package org.reto3.ThirdCycle.services;
 
-import org.reto3.entities.Category;
-import org.reto3.entities.Farm;
-import org.reto3.entities.Message;
-import org.reto3.repositories.CategoryRepository;
+import org.reto3.ThirdCycle.repositories.CategoryRepository;
+import org.reto3.ThirdCycle.entities.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

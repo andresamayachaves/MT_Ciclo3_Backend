@@ -1,4 +1,4 @@
-package org.reto3.entities;
+package org.reto3.ThirdCycle.entities;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,8 +1,6 @@
-package org.reto3.entities;
+package org.reto3.ThirdCycle.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.reto3.services.MessageService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.io.Serializable;

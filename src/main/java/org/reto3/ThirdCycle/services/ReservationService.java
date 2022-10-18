@@ -1,4 +1,4 @@
-package org.reto3.services;
+package org.reto3.ThirdCycle.services;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,14 +8,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import org.reto3.ThirdCycle.entities.Client;
+import org.reto3.ThirdCycle.entities.ReportClient;
+import org.reto3.ThirdCycle.entities.Reservation;
+import org.reto3.ThirdCycle.repositories.ClientRepository;
+import org.reto3.ThirdCycle.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import org.reto3.entities.Client;
-import org.reto3.entities.ReportClient;
-import org.reto3.entities.Reservation;
-import org.reto3.repositories.ClientRepository;
-import org.reto3.repositories.ReservationRepository;
 
 @Service
 public class ReservationService {

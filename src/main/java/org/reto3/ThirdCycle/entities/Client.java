@@ -1,6 +1,4 @@
-package org.reto3.entities;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+package org.reto3.ThirdCycle.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -1,10 +1,10 @@
-package org.reto3.controllers;
+package org.reto3.ThirdCycle.controllers;
 
 
 import java.util.List;
 
-import org.reto3.entities.Farm;
-import org.reto3.services.FarmService;
+import org.reto3.ThirdCycle.entities.Farm;
+import org.reto3.ThirdCycle.services.FarmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

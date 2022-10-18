@@ -1,11 +1,5 @@
 package org.reto3;
 
-import org.apache.tomcat.jni.Address;
-import org.reto3.entities.Category;
-import org.reto3.entities.Farm;
-import org.reto3.repositories.CategoryRepository;
-import org.reto3.repositories.FarmRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
