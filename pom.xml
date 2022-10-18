@@ -14,7 +14,8 @@
     <name>reto3</name>
     <description>Demo project for Spring Boot</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -67,7 +68,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.1.0</version>
             </plugin>
         </plugins>
     </build>
