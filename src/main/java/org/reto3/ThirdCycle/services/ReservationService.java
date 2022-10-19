@@ -43,15 +43,6 @@ public class ReservationService {
                 return listReportClients;
             }
 
-//            public String getReservationsReportStatus(){
-//                String result = "";
-//                List<Reservation> completed = this.reservationRepository.findByStatus("completed");
-//                List<Reservation> cancelled = this.reservationRepository.findByStatus("cancelled");
-//                result = "{" + "\"completed\":"+completed.size()+","
-//                        +"\"cancelled\":"+cancelled.size()+"}";
-//                return result;
-//            }
-
             public List<Reservation> getReservationsReportDates(String start, String end){
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd", Locale.ENGLISH);
                 formatter.setTimeZone(TimeZone.getTimeZone("America/New_York"));
