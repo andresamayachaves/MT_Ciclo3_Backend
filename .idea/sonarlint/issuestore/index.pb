@@ -1,3 +1,21 @@
 
 Z
 *src/main/java/org/reto3/ThirdCycleApp.java,9\4\941c594547f807e8b66d6a3dbcbabcba07eada77
+i
+9src/main/java/org/reto3/ThirdCycle/entities/Category.java,a\2\a2ab554fcd2230a5f78781bd8074a9179e58b4a2
+z
+Jsrc/main/java/org/reto3/ThirdCycle/repositories/ReservationRepository.java,2\5\2593b808e3e9c496902f0a916e12976e0c487062
+v
+Fsrc/main/java/org/reto3/ThirdCycle/repositories/MessageRepository.java,7\6\76c542cc116130f7a9e9f9d0b2238f23320c7141
+p
+@src/main/java/org/reto3/ThirdCycle/services/CategoryService.java,c\4\c45860246d5dac3b4fc7d6ca9602e4fe0c2906a0
+g
+7src/main/java/org/reto3/ThirdCycle/entities/Client.java,6\8\684bf16a9df3c0e353761655e4c04f09f74c91dd
+n
+>src/main/java/org/reto3/ThirdCycle/services/ClientService.java,4\2\4204bbd3fe61c329396fbac290dcddb3005f2fcc
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+s
+Csrc/main/java/org/reto3/ThirdCycle/services/ReservationService.java,1\9\19e613270a3e0ad8f0dbac933b5122a1965f55f8
+l
+<src/main/java/org/reto3/ThirdCycle/entities/Reservation.java,8\2\820e8adcf7ee1e6b84aacc62d1b8995071e5ae90
