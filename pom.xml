@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>retos345</artifactId>
+	<artifactId>zorphus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>retos345</name>
+	<name>zorphus</name>
 	<description>Farms manager</description>
 	<properties>
 		<java.version>11</java.version>
